@@ -1,0 +1,47 @@
+\documentclass[
+    12pt,       % fonte 12pt
+    a4paper,    % Folha a4
+    landscape   % 
+]{article}
+
+\input{config/package}    % arquivo de pacotes
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                    Definições globais                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tipo{c}        % "d" para declaração e "c" para certificação.
+\tipocertificado{o}
+
+\ies{Universidade Estadual de Campinas (UNICAMP)}
+\iessecretaria{Grupo de Estudos \\ de Software Livre}
+\nomedocurso{LKCAMP}
+\coordenador{Pedro Sader Azevedo}
+\datadadeclaracao{12/12/2021 a 12/12/2021}
+\local{Campinas - SP}
+\data{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                           Ajustes                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ajustedogov{10.5cm}                % 11.5cm
+\ajustedaieslogo{3cm}               % 4 cm    
+\ajustedaminipageieslogo{.18}        % 0.18    
+\ajustedaassinatura{2.5cm}            % 3 cm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                    Começo do documento                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}    \pagestyle{empty}
+	
+	% ministrante
+	\part{mini}{Nome do Ministrante}{Minicurso de Linux}{6}
+	\part{mini}{Fulano da silva}{Física matemática}{12}
+
+	% participante
+	\part{part}{Nome do Participante}{Nome do evento}{6}
+	\part{part}{Sicrano de Souza}{Nome do curso}{6}
+
+\end{document}

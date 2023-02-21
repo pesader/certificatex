@@ -1,0 +1,193 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  Configurações gerais                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{figure/}} % Specifies the directory where pictures are stored
+
+\newcommand{\tipo}{\def \@tipo}
+\newcommand{\tipocertificado}{\def \@tipocertificado}
+\newcommand{\ies}{\def \@ies}
+\newcommand{\iessecretaria}{\def \@iessecretaria}
+\newcommand{\nomedocurso}{\def \@nomedocurso}
+\newcommand{\coordenador}{\def \@coordenador}
+\newcommand{\datadadeclaracao}{\def \@datadadeclaracao}
+\newcommand{\local}{\def \@local}
+\newcommand{\data}{\def \@data}
+\newcommand{\ajustedogov}{\def \@ajustedogov}
+\newcommand{\ajustedaieslogo}{\def \@ajustedaieslogo}
+\newcommand{\ajustedaminipageieslogo}{\def \@ajustedaminipageieslogo}
+\newcommand{\ajustedaassinatura}{\def \@ajustedaassinatura}
+\newcommand{\tum}{\def \@tum}
+\newcommand{\tdois}{\def \@dois}
+\newcommand{\ttres}{\def \@tres}
+
+\newcommand{\printtipo}{\@tipo}
+\newcommand{\printtipocertificado}{\@tipocertificado}
+\newcommand{\printies}{\@ies}
+\newcommand{\printiessecretaria}{\@iessecretaria}
+\newcommand{\printnomedocurso}{\@nomedocurso}
+\newcommand{\printcoordenador}{\@coordenador}
+\newcommand{\printdatadadeclaracao}{\@datadadeclaracao}
+\newcommand{\printlocal}{\@local}
+\newcommand{\printdata}{\@data}
+\newcommand{\printajustedogov}{\@ajustedogov}
+\newcommand{\printajustedaieslogo}{\@ajustedaieslogo}
+\newcommand{\printajustedaminipageieslogo}{\@ajustedaminipageieslogo}
+\newcommand{\printajustedaassinatura}{\@ajustedaassinatura}
+\newcommand{\printtum}{\@tum}
+\newcommand{\printtdois}{\@dois}
+\newcommand{\printttres}{\@tres}
+
+\tipo{}
+\tipocertificado{}
+\ies{}
+\iessecretaria{}
+\nomedocurso{}
+\coordenador{}
+\datadadeclaracao{}
+\local{}
+\data{\today}
+\ajustedogov{}
+\ajustedaieslogo{}
+\ajustedaminipageieslogo{}
+\ajustedaassinatura{}
+\tum{}
+\tdois{}
+\ttres{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Configuração da imagem de fundo             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\backgroundsetup{
+    scale=1,
+    color=black,
+    opacity=1,
+    angle=0,
+    contents={%
+      \includegraphics[width=\paperwidth,height=\paperheight]{bg2.eps}
+      }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%            Configurações do documento                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\condicoes}[1]{
+    \ifthenelse{\equal{\printtipo}{c}}{
+        \tum{CERTIFICADO}
+        \tdois{Certificamos}
+    }{
+        \tum{DECLARAÇÃO}
+        \tdois{Declaramos}
+    }
+
+    \ifthenelse{\equal{#1}{mini}}{
+        \ttres{ministrou\hspace{5pt}}
+    }{
+        \ttres{participou d}
+    }
+}
+
+\newcommand{\printtextomini}[6]{
+    \printtdois \ para os devidos fins, que \textsc{#1} \printttres%
+    \printtipocertificado \ ``\textbf{#2}'', realizado pelo #3 na #4,
+    com carga horária de #5 hora(s), no período de #6.
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                    Topo do documento                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\printtopo}{
+    \vskip 1.5cm
+    \hskip 1.5cm
+    \begin{minipage}{\printajustedaminipageieslogo\textwidth}
+        \includegraphics[width=\printajustedaieslogo]{ies_logo}
+    \end{minipage}
+    \hfill\hskip -2cm
+    \begin{minipage}{.4\textwidth}
+        \scalefont{1.5}
+        \begin{tabular}{|l}
+            ~ \\
+            \printiessecretaria \\
+            ~ \\ 
+        \end{tabular}
+    \end{minipage}
+        \hfill
+        \begin{minipage}{.4\textwidth}
+            \hskip -1.0cm
+            \includegraphics[width=\printajustedogov]{gov}
+    \end{minipage}
+    \begin{minipage}{.04\textwidth}
+        ~
+    \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                    Corpo do documento                    %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\printcorpo}[4]{
+    \condicoes{#1}
+    \begin{center}\resizebox{!}{10mm}
+        {\sc \MakeUppercase \printtum}
+    \end{center}
+    
+    \vskip .5cm
+    
+    \hskip 10pt
+    \begin{center}
+        \begin{minipage}{.8\textwidth}
+        	\scalefont{1.5}
+    		\printtextomini{#2}{#3}{\printnomedocurso }%
+		    {\printies}{#4}{\printdatadadeclaracao}
+        \end{minipage}
+    \end{center}
+    
+    \vspace{3em}
+    
+    \hfill
+    \begin{minipage}{.4\textwidth}
+        \scalefont{1.5}
+        \printlocal, \today
+    \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                      Base do documento                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\printbase}{
+    \noindent\hspace{2.8cm}%
+    \begin{minipage}{.4\textwidth}
+    	\scalefont{.7}
+    	\hskip 20pt\includegraphics[width=\printajustedaassinatura]{ass}\\[-42pt]
+    	\rule{7cm}{1pt}\\[5pt]
+    	\printcoordenador\\Coordenador do \printnomedocurso
+    \end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                        Documento                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\part}[4]{%
+    \BgThispage     % Imagem de fundo
+    ~
+    \vskip -1cm
+    
+    \printtopo      % Imprimi a parte de cima do documento
+    
+    \vskip 1.5cm
+    
+    \printcorpo{#1}{#2}{#3}{#4}     % Imprimi o corpo do documento
+    
+    \vskip .5cm
+    
+    \printbase      % Imprimi a base do documento
+    
+    \vfill
+    
+    \newpage
+}
