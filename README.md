@@ -1,6 +1,6 @@
 # CertificaTeX
 
-Easily generate participation certificates.
+Easily generate participation certificates, powered by LaTeX.
 
 ![demo](./assets/demo.png)
 
