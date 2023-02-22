@@ -10,4 +10,4 @@ certificates:
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
-    - build/
+    - build/*
