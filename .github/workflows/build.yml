@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ghcr.io/pesader/toolbxes:tex
 
     steps:
       - name: Checkout
