@@ -1,0 +1,13 @@
+image: ghcr.io/pesader/toolbxes:tex
+
+variables:
+  GIT_CHECKOUT: "true"
+
+certificates:
+  script:
+  - mkdir build && ./build.sh
+
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+    - build/
