@@ -1,0 +1,25 @@
+name: Build and upload certificates
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Make build directory
+        run: mkdir build
+
+      - name: Build certificates
+        run: ./build.sh
+
+      - name: Upload certificates
+        uses: actions/upload-artifact@v3
+        with:
+          name: certificates
+          path: build/
