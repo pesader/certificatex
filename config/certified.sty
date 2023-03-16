@@ -1,61 +1,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                  Configurações gerais                    %%
+%%                  General configuration                   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\graphicspath{{figure/}} % Specifies the directory where pictures are stored
 
-\newcommand{\tipo}{\def \@tipo}
-\newcommand{\tipocertificado}{\def \@tipocertificado}
-\newcommand{\ies}{\def \@ies}
-\newcommand{\iessecretaria}{\def \@iessecretaria}
-\newcommand{\nomedocurso}{\def \@nomedocurso}
-\newcommand{\coordenador}{\def \@coordenador}
-\newcommand{\datadadeclaracao}{\def \@datadadeclaracao}
-\newcommand{\local}{\def \@local}
-\newcommand{\data}{\def \@data}
-\newcommand{\ajustedogov}{\def \@ajustedogov}
-\newcommand{\ajustedaieslogo}{\def \@ajustedaieslogo}
-\newcommand{\ajustedaminipageieslogo}{\def \@ajustedaminipageieslogo}
-\newcommand{\ajustedaassinatura}{\def \@ajustedaassinatura}
-\newcommand{\tum}{\def \@tum}
-\newcommand{\tdois}{\def \@dois}
-\newcommand{\ttres}{\def \@tres}
+% directory where pictures are sourced from
+\graphicspath{{figure/}}
 
-\newcommand{\printtipo}{\@tipo}
-\newcommand{\printtipocertificado}{\@tipocertificado}
-\newcommand{\printies}{\@ies}
-\newcommand{\printiessecretaria}{\@iessecretaria}
-\newcommand{\printnomedocurso}{\@nomedocurso}
-\newcommand{\printcoordenador}{\@coordenador}
-\newcommand{\printdatadadeclaracao}{\@datadadeclaracao}
-\newcommand{\printlocal}{\@local}
-\newcommand{\printdata}{\@data}
-\newcommand{\printajustedogov}{\@ajustedogov}
-\newcommand{\printajustedaieslogo}{\@ajustedaieslogo}
-\newcommand{\printajustedaminipageieslogo}{\@ajustedaminipageieslogo}
-\newcommand{\printajustedaassinatura}{\@ajustedaassinatura}
-\newcommand{\printtum}{\@tum}
-\newcommand{\printtdois}{\@dois}
-\newcommand{\printttres}{\@tres}
-
-\tipo{}
-\tipocertificado{}
-\ies{}
-\iessecretaria{}
-\nomedocurso{}
-\coordenador{}
-\datadadeclaracao{}
-\local{}
-\data{\today}
-\ajustedogov{}
-\ajustedaieslogo{}
-\ajustedaminipageieslogo{}
-\ajustedaassinatura{}
-\tum{}
-\tdois{}
-\ttres{}
+\newcommand{\type}{\def \@type}
+\newcommand{\eventgender}{\def \@eventgender}
+\newcommand{\university}{\def \@university}
+\newcommand{\emitterdescription}{\def \@emitterdescription}
+\newcommand{\emittername}{\def \@emittername}
+\newcommand{\emittergender}{\def \@emittergender}
+\newcommand{\signer}{\def \@signer}
+\newcommand{\signerposition}{\def \@signerposition}
+\newcommand{\eventdate}{\def \@eventdate}
+\newcommand{\duration}{\def \@duration}
+\newcommand{\durationtext}{\def \@durationtext}
+\newcommand{\location}{\def \@location}
+\newcommand{\emissiondate}{\def \@emissiondate}
+\newcommand{\affiliationlogosize}{\def \@affiliationlogosize}
+\newcommand{\emitterlogosize}{\def \@emitterlogosize}
+\newcommand{\emitterdescriptionoffset}{\def \@emitterdescriptionoffset}
+\newcommand{\signaturesize}{\def \@signaturesize}
+\newcommand{\typetitle}{\def \@typetitle}
+\newcommand{\typeverb}{\def \@typeverb}
+\newcommand{\recipientrole}{\def \@recipientrole}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%              Configuração da imagem de fundo             %%
+%%              Background image configuration              %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \backgroundsetup{
@@ -63,61 +35,67 @@
     color=black,
     opacity=1,
     angle=0,
-    contents={%
+    contents={
       \includegraphics[width=\paperwidth,height=\paperheight]{bg2.eps}
-      }%
+      }
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%            Configurações do documento                   %%
+%%                 Document configuration                  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\condicoes}[1]{
-    \ifthenelse{\equal{\printtipo}{c}}{
-        \tum{CERTIFICADO}
-        \tdois{Certificamos}
+    \ifthenelse{\equal{\@type}{c}}{
+        \typetitle{CERTIFICADO}
+        \typeverb{Certificamos}
     }{
-        \tum{DECLARAÇÃO}
-        \tdois{Declaramos}
+        \typetitle{DECLARAÇÃO}
+        \typeverb{Declaramos}
+    }
+
+    \ifthenelse{\equal{\@duration}{d}}{
+        \durationtext{dia}
+    }{
+        \durationtext{período de}
     }
 
     \ifthenelse{\equal{#1}{mini}}{
-        \ttres{ministrou\hspace{5pt}}
+        \recipientrole{ministrou\hspace{5pt}}
     }{
-        \ttres{participou d}
+        \recipientrole{participou d}
     }
 }
 
 \newcommand{\printtextomini}[6]{
-    \printtdois \ para os devidos fins, que \textsc{#1} \printttres%
-    \printtipocertificado \ ``\textbf{#2}'', realizado pelo #3 na #4,
-    com carga horária de #5 hora(s), no período de #6.
+    \@typeverb,\ para os devidos fins, que \textsc{#1} \@recipientrole
+    \@eventgender \ ``\textbf{#2}'', realizado pel\@emittergender \ #3 na #4,
+    com carga horária de #5 hora(s), no \@durationtext \ #6.
 }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                    Topo do documento                     %%
+%%                         Header                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\printtopo}{
     \vskip 1.5cm
     \hskip 1.5cm
-    \begin{minipage}{\printajustedaminipageieslogo\textwidth}
-        \includegraphics[width=\printajustedaieslogo]{ies_logo}
+    \begin{minipage}{\@emitterdescriptionoffset\textwidth}
+        \includegraphics[width=\@emitterlogosize]{emitter-logo}
     \end{minipage}
     \hfill\hskip -2cm
     \begin{minipage}{.4\textwidth}
         \scalefont{1.5}
         \begin{tabular}{|l}
             ~ \\
-            \printiessecretaria \\
+            \@emitterdescription \\
             ~ \\ 
         \end{tabular}
     \end{minipage}
         \hfill
         \begin{minipage}{.4\textwidth}
             \hskip -1.0cm
-            \includegraphics[width=\printajustedogov]{gov}
+            \includegraphics[width=\@affiliationlogosize]{affiliation-logo}
     \end{minipage}
     \begin{minipage}{.04\textwidth}
         ~
@@ -125,13 +103,13 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                    Corpo do documento                    %%
+%%                           Body                           %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\printcorpo}[4]{
     \condicoes{#1}
     \begin{center}\resizebox{!}{10mm}
-        {\sc \MakeUppercase \printtum}
+        {\sc \MakeUppercase \@typetitle}
     \end{center}
     
     \vskip .5cm
@@ -140,8 +118,8 @@
     \begin{center}
         \begin{minipage}{.8\textwidth}
         	\scalefont{1.5}
-    		\printtextomini{#2}{#3}{\printnomedocurso }%
-		    {\printies}{#4}{\printdatadadeclaracao}
+    		\printtextomini{#2}{#3}{\@emittername }%
+		    {\@university}{#4}{\@eventdate}
         \end{minipage}
     \end{center}
     
@@ -150,7 +128,7 @@
     \hfill
     \begin{minipage}{.4\textwidth}
         \scalefont{1.5}
-        \printlocal, \today
+        \@location, \today
     \end{minipage}
 }
 
@@ -162,9 +140,9 @@
     \noindent\hspace{2.8cm}%
     \begin{minipage}{.4\textwidth}
     	\scalefont{.7}
-    	\hskip 20pt\includegraphics[width=\printajustedaassinatura]{ass}\\[-42pt]
+    	\hskip 20pt\includegraphics[width=\@signaturesize]{ass}\\[-42pt]
     	\rule{7cm}{1pt}\\[5pt]
-    	\printcoordenador\\Coordenador do \printnomedocurso
+    	\@signer\\ \@signerposition \ d\@emittergender \ \@emittername
     \end{minipage}
 }
 
@@ -173,21 +151,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\part}[4]{%
-    \BgThispage     % Imagem de fundo
+    \BgThispage
     ~
     \vskip -1cm
-    
-    \printtopo      % Imprimi a parte de cima do documento
-    
+    \printtopo
     \vskip 1.5cm
-    
-    \printcorpo{#1}{#2}{#3}{#4}     % Imprimi o corpo do documento
-    
+    \printcorpo{#1}{#2}{#3}{#4}
     \vskip .5cm
-    
-    \printbase      % Imprimi a base do documento
-    
+    \printbase
     \vfill
-    
     \newpage
 }

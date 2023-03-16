@@ -1,37 +1,59 @@
 \documentclass[
-    12pt,       % fonte 12pt
-    a4paper,    % Folha a4
-    landscape   % 
+    12pt,
+    a4paper,
+    landscape
 ]{article}
 
-\input{config/package}    % arquivo de pacotes
+\input{config/package}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                    Definições globais                    %%
+%%                     Global variables                     %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\tipo{c}        % "d" para declaração e "c" para certificação.
-\tipocertificado{o}
+% certificate type - "d" for declaration, "c" for certificate
+\type{c}
 
-\ies{Universidade Estadual de Campinas (UNICAMP)}
-\iessecretaria{Grupo de Estudos \\ de Software Livre}
-\nomedocurso{LKCAMP}
-\coordenador{Pedro Sader Azevedo}
-\datadadeclaracao{12/12/2021 a 12/12/2021}
-\local{Campinas - SP}
-\data{\today}
+% event gender - "o" for masculine, "a" for feminine
+\eventgender{o}
+
+% emitter gender - "o" for masculine, "a" for feminine
+\emittergender{o}
+
+% university the emitter is part of
+\university{Universidade Estadual de Campinas (UNICAMP)}
+
+% short description of the emitter, displayed beside its logo
+\emitterdescription{Grupo de Estudos \\ de Software Livre}
+
+% name of the certificate emitter
+\emittername{LKCAMP}
+
+% name of representative who signs the certificate
+\signer{Pedro Sader Azevedo}
+
+% position of the signer in the emitter organization
+\signerposition{Coordenador}
+
+% event date
+\eventdate{12/12/2021 a 12/12/2021}
+
+% event duration = 'd' for a day, 'p' for a period
+\duration{p}
+
+\location{Campinas - SP}
+\emissiondate{\today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                           Ajustes                        %%
+%%                        Adjustments                       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ajustedogov{10.5cm}                % 11.5cm
-\ajustedaieslogo{3cm}               % 4 cm    
-\ajustedaminipageieslogo{.18}        % 0.18    
-\ajustedaassinatura{2.5cm}            % 3 cm
+\emitterdescriptionoffset{.18}
+\affiliationlogosize{10.5cm}
+\emitterlogosize{3cm}
+\signaturesize{2.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%                    Começo do documento                   %%
+%%                          Content                         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
