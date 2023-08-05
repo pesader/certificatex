@@ -1,4 +1,4 @@
-# CertificaTeX
+<h1><img align="center" height="80" src="./assets/icon.png"> Certificatex</h1>
 
 Easily generate participation certificates, powered by LaTeX.
 
